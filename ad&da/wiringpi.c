@@ -16,7 +16,7 @@ int fd, adcVal;
 
 int main() {
  if (wiringPiSetup () == -1) exit (1);
- f d = wiringPiI2CSetup(PCF8591);
+ fd = wiringPiI2CSetup(PCF8591);
 
 
  while (1) {

@@ -2,7 +2,7 @@
  #include <stdio.h>
  #include <unistd.h>
  
- unsigned char b[]={0x40,0x00};
+ unsigned char b[]={0x40,0x00}; // mislim da je tu greska treba biti 0x04
  
  
  int main(void)

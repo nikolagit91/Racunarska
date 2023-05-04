@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/satovi">
+        <file>lcd.png</file>
+        <file>sat1.png</file>
+        <file>sat2.png</file>
+        <file>alarm.png</file>
+    </qresource>
+</RCC>

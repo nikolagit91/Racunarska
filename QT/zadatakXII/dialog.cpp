@@ -2,6 +2,13 @@
 #include "ui_dialog.h"
 using namespace std;
 
+
+
+unsigned char decimaltoBCD (int decimal) {
+
+    return (((decimal/10)<<4) | (decimal % 10));
+ }
+
 int p=0;
 int am_pm=0;
 int alarm_flag=0;
@@ -45,11 +52,11 @@ void Dialog::on_pushButton_clicked()
          QMessageBox::warning(this, "NEPRAVILAN FORMAT", "Unesite vreme u formatu ----> 'hh:mm:ss'.");
     else
     {
-         init8563_Store[2]=setovano.hour();
-         init8563_Store[1]=setovano.minute();
-         init8563_Store[0]=setovano.second();
-         P8563_init();
-         ui->lineEdit_2->setText(setovano.toString("hh:mm:ss"));
+        init8563_Store[2]=decimaltoBCD(setovano.hour());
+        init8563_Store[1]=decimaltoBCD(setovano.minute());
+        init8563_Store[0]=decimaltoBCD(setovano.second());
+        P8563_init();
+        ui->lineEdit_2->setText(setovano.toString("hh:mm:ss"));
     }
 }
 

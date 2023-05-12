@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/satovi">
-        <file>sat1.png</file>
-        <file>sat2.png</file>
-    </qresource>
-</RCC>

@@ -1,0 +1,69 @@
+#include "dialog.h"
+#include "ui_dialog.h"
+
+Dialog::Dialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::Dialog)
+{
+    ui->setupUi(this);
+
+
+    //kreiranje podataka za prikaz
+     QLineSeries *series = new QLineSeries();
+     // prvi način dodavanja podataka za prikaz
+     series->append(0, 0);
+     series->append(1, 1);
+     series->append(2, 2);
+     series->append(3, 3.3);
+
+     // drugi način dodavanja podataka za prikaz
+     *series << QPointF(4, 3) << QPointF(4, 2) << QPointF(5,1);
+
+
+     // pravljenje grafika
+     QChart *chart = new QChart();
+     chart->legend()->hide();
+     chart->addSeries(series);
+     chart->setTitle("Mjerenje napona");
+     //chart->createDefaultAxes();
+
+
+
+     // pravljenje X i Y osa
+     QtCharts::QAbstractAxis *xAxis = new QtCharts::QValueAxis();
+     QtCharts::QAbstractAxis *yAxis = new QtCharts::QValueAxis();
+
+
+     // opseg za X i Y osu
+     xAxis->setRange(0, 5);
+     yAxis->setRange(0, 4);
+
+
+     // stavljanje osa na grafik
+     chart->addAxis(xAxis, Qt::AlignBottom);
+     chart->addAxis(yAxis, Qt::AlignLeft);
+     series->attachAxis(xAxis);
+     series->attachAxis(yAxis);
+
+
+     // ispis grafika
+     QChartView *chartView = new QChartView(chart);
+     chartView->setRenderHint(QPainter::Antialiasing);
+     chartView->setParent(ui->horizontalFrame);
+
+     //postavljanje grafika u vertikal layout
+    //ui->verticalLayout->addWidget(chartView);
+
+
+
+}
+
+Dialog::~Dialog()
+{
+    delete ui;
+}
+
+
+
+
+
